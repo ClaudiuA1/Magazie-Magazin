@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="adaugaMagazie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nume" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cantitate" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adaugaMagazieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adaugaMagazieResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateMagazie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeProdus" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cantitate" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateMagazieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateMagazieResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="stergeMagazie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProdusId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="stergeMagazieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stergeMagazieResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="plaseazaComanda">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeProdus" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Bucati" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="plaseazaComandaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plaseazaComandaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="adaugaMagazieSoapIn">
+    <wsdl:part name="parameters" element="tns:adaugaMagazie" />
+  </wsdl:message>
+  <wsdl:message name="adaugaMagazieSoapOut">
+    <wsdl:part name="parameters" element="tns:adaugaMagazieResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateMagazieSoapIn">
+    <wsdl:part name="parameters" element="tns:updateMagazie" />
+  </wsdl:message>
+  <wsdl:message name="updateMagazieSoapOut">
+    <wsdl:part name="parameters" element="tns:updateMagazieResponse" />
+  </wsdl:message>
+  <wsdl:message name="stergeMagazieSoapIn">
+    <wsdl:part name="parameters" element="tns:stergeMagazie" />
+  </wsdl:message>
+  <wsdl:message name="stergeMagazieSoapOut">
+    <wsdl:part name="parameters" element="tns:stergeMagazieResponse" />
+  </wsdl:message>
+  <wsdl:message name="plaseazaComandaSoapIn">
+    <wsdl:part name="parameters" element="tns:plaseazaComanda" />
+  </wsdl:message>
+  <wsdl:message name="plaseazaComandaSoapOut">
+    <wsdl:part name="parameters" element="tns:plaseazaComandaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="adaugaMagazie">
+      <wsdl:input message="tns:adaugaMagazieSoapIn" />
+      <wsdl:output message="tns:adaugaMagazieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateMagazie">
+      <wsdl:input message="tns:updateMagazieSoapIn" />
+      <wsdl:output message="tns:updateMagazieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="stergeMagazie">
+      <wsdl:input message="tns:stergeMagazieSoapIn" />
+      <wsdl:output message="tns:stergeMagazieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="plaseazaComanda">
+      <wsdl:input message="tns:plaseazaComandaSoapIn" />
+      <wsdl:output message="tns:plaseazaComandaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="adaugaMagazie">
+      <soap:operation soapAction="http://tempuri.org/adaugaMagazie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMagazie">
+      <soap:operation soapAction="http://tempuri.org/updateMagazie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stergeMagazie">
+      <soap:operation soapAction="http://tempuri.org/stergeMagazie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="plaseazaComanda">
+      <soap:operation soapAction="http://tempuri.org/plaseazaComanda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="adaugaMagazie">
+      <soap12:operation soapAction="http://tempuri.org/adaugaMagazie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMagazie">
+      <soap12:operation soapAction="http://tempuri.org/updateMagazie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stergeMagazie">
+      <soap12:operation soapAction="http://tempuri.org/stergeMagazie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="plaseazaComanda">
+      <soap12:operation soapAction="http://tempuri.org/plaseazaComanda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="https://localhost:44383/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="https://localhost:44383/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
